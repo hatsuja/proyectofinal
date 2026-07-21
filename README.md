@@ -28,6 +28,6 @@ Para facilitar la navegación, los contenidos se encuentran organizados de la si
 
 ### Índice de Contenidos
 
-* **[Requerimientos y Análisis del programa](https://github.com/hatsuja/PortafolioDigitalTeoriaProgramacion/blob/main/programacion/unidad3/Reflexi%C3%B3n3.md)**
-* **[Codificacion](https://github.com/hatsuja/PortafolioDigitalTeoriaProgramacion/blob/main/programacion/unidad3/Reflexi%C3%B3n3.md)**
-* **[Reflexiones](https://github.com/hatsuja/PortafolioDigitalTeoriaProgramacion/blob/main/programacion/unidad3/Reflexi%C3%B3n3.md)**
+* **[Requerimientos y Análisis del programa](https://github.com/hatsuja/proyectofinal/blob/main/ProyectoFinal/Requerimientos.md)**
+* **[Codificacion](https://github.com/hatsuja/proyectofinal/blob/main/ProyectoFinal/Codificacion.md)**
+* **[Reflexiones](https://github.com/hatsuja/proyectofinal/blob/main/ProyectoFinal/Reflexiones.md)**
