@@ -54,8 +54,7 @@ El sistema debe detectar la opción de "Salir" del menú principal para interrum
 
 
   
-[📂 Ir al Índice Principal 📂](programacion/unidad1/Algoritmo.md](https://github.com/hatsuja/proyectofinal)****
-
+[📂 Ir al Índice Principal 📂](https://github.com/hatsuja/proyectofinal)
 
 
 
