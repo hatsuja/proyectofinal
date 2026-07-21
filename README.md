@@ -18,7 +18,7 @@
   * Juan Pablo Jumbo Orellana
   * Luis Alejandro Rodríguez Luzón
   * Andy Vladimir Ordoñez Namcela
-  * [Integrante 4]
+  * Sdier Emanuel Roblez Roblez 
 
 ---
 
