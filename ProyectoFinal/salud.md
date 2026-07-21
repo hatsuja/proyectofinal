@@ -43,23 +43,51 @@ void mostrarFraseMotivacional() {
     printf("======================================================\n\n");
 }
 
-// Configurar tiempo manual para rutina libre (máximo 30 minutos y valores positivos)
+// Configurar tiempo manual para rutina libre (máximo 30 minutos)
 int configurarTiempoManual() {
     int minutos = 0;
     do {
-        printf("\n⏱️ CONFIGURACION DE RUTINA LIBRE:\n");
-        printf("Ingresa los minutos que deseas entrenar (Debe ser mayor a 0 y maximo 30 min): ");
+        printf("\n⏱️ CONFIGURACION DE CRONOMETRO LIBRE:\n");
+        printf("Ingresa los minutos que deseas cronometrar (Maximo 30 min): ");
         scanf("%d", &minutos);
         
         if (minutos <= 0 || minutos > 30) {
-            printf("\n❌ Error: El tiempo debe ser un valor positivo y no puede pasar de 30 minutos. Intenta de nuevo.\n");
+            printf("\n❌ Error: El tiempo debe ser mayor a 0 y no pasar de 30 minutos.\n");
         }
     } while (minutos <= 0 || minutos > 30);
     
     return minutos;
 }
 
-// Iniciar cronómetro para un ejercicio específico
+// Cronómetro libre que ahora sí suma 1 al completarse y calcula sus calorías
+int iniciarCronometroLibre(int segundosTotales) {
+    int tiempoRestante = segundosTotales;
+    
+    printf("\n⏱️ CRONOMETRO LIBRE EN CURSO...\n");
+    printf("Presiona Ctrl+C en tu teclado si deseas salir antes.\n\n");
+    
+    while (tiempoRestante > 0) {
+        int minutos = tiempoRestante / 60;
+        int segundos = tiempoRestante % 60;
+        
+        printf("\rTiempo restante: %02d:%02d ", minutos, segundos);
+        fflush(stdout);
+        
+        #ifdef _WIN32
+            Sleep(1000);
+        #else
+            struct timespec ts = {1, 0};
+            nanosleep(&ts, NULL);
+        #endif
+        
+        tiempoRestante--;
+    }
+    
+    printf("\n\n🎉 ¡El tiempo del cronometro libre ha terminado con exito!\n");
+    return 1; // Retorna 1 si llegó a cero por completo
+}
+
+// Cronómetro para rutina guiada (ejercicio por ejercicio)
 int iniciarCronometroEjercicio(int segundosTotales, const char* nombreEjercicio) {
     int tiempoRestante = segundosTotales;
     
@@ -87,7 +115,7 @@ int iniciarCronometroEjercicio(int segundosTotales, const char* nombreEjercicio)
     return 1;
 }
 
-// Calcular calorías basado en el factor del nivel y los minutos totales
+// Calcular calorías basado en el factor del nivel y los minutos
 float calcularCalorias(int minutos, float factorCalorias) {
     return minutos * factorCalorias;
 }
@@ -204,7 +232,7 @@ int main() {
         strcpy(rutinaAsignada[2].series, "4 series x 12 por pierna");
     }
 
-    // Bucle principal para mantenerse dentro de la app tras terminar rutinas
+    // Bucle principal para mantenerse en la aplicación hasta que se decida salir
     do {
         printf("\n======================================================\n");
         printf("💪 RUTINA ASIGNADA PARA TU NIVEL (%d min totales)\n\n", tiempoMinutosRutina);
@@ -214,71 +242,95 @@ int main() {
         }
         printf("======================================================\n");
         
-        // Módulo D: Elección entre Rutina Predefinida o Rutina Libre
         int tipoEntrenamiento = 0;
-        printf("¿Como deseas entrenar hoy?\n");
+        printf("¿Cómo deseas entrenar hoy?\n");
         printf("1. Usar la rutina predefinida asignada\n");
-        printf("2. Configurar una rutina libre (Personalizada, máx. 30 min)\n");
+        printf("2. Usar cronómetro libre independiente (Máx. 30 min)\n");
         printf("Elige una opción (1-2): ");
         scanf("%d", &tipoEntrenamiento);
         
-        int minutosFinales = 0;
         if (tipoEntrenamiento == 1) {
-            minutosFinales = tiempoMinutosRutina;
-        } else {
-            minutosFinales = configurarTiempoManual();
-        }
-        
-        char comenzar;
-        printf("\n¿Deseas iniciar el entrenamiento por ejercicios ahora? (s/n): ");
-        scanf(" %c", &comenzar);
-        
-        if (comenzar == 's' || comenzar == 'S') {
-            int minutosPorEjercicio = minutosFinales / cantidadEjercicios;
-            if (minutosPorEjercicio < 1) minutosPorEjercicio = 1; 
-            int segundosPorEjercicio = minutosPorEjercicio * 60;
+            char comenzar;
+            printf("\n¿Deseas iniciar la rutina predefinida ahora? (s/n): ");
+            scanf(" %c", &comenzar);
             
-            int rutinaCompletaExitosa = 1;
+            if (comenzar == 's' || comenzar == 'S') {
+                int minutosPorEjercicio = tiempoMinutosRutina / cantidadEjercicios;
+                if (minutosPorEjercicio < 1) minutosPorEjercicio = 1; 
+                int segundosPorEjercicio = minutosPorEjercicio * 60;
+                
+                int rutinaCompletaExitosa = 1;
 
-            for (int i = 0; i < cantidadEjercicios; i++) {
-                printf("\n--------------------------------------------------\n");
-                printf("Iniciando ejercicio %d de %d:\n", i + 1, cantidadEjercicios);
-                printf("• %s (%s)\n", rutinaAsignada[i].nombre, rutinaAsignada[i].series);
-                printf("• Guia: %s\n", rutinaAsignada[i].guia);
-                
-                int resultado = iniciarCronometroEjercicio(segundosPorEjercicio, rutinaAsignada[i].nombre);
-                
-                if (resultado != 1) {
-                    rutinaCompletaExitosa = 0;
-                    break;
+                for (int i = 0; i < cantidadEjercicios; i++) {
+                    printf("\n--------------------------------------------------\n");
+                    printf("Iniciando ejercicio %d de %d:\n", i + 1, cantidadEjercicios);
+                    printf("• %s (%s)\n", rutinaAsignada[i].nombre, rutinaAsignada[i].series);
+                    printf("• Guia: %s\n", rutinaAsignada[i].guia);
+                    
+                    int resultado = iniciarCronometroEjercicio(segundosPorEjercicio, rutinaAsignada[i].nombre);
+                    
+                    if (resultado != 1) {
+                        rutinaCompletaExitosa = 0;
+                        break;
+                    }
                 }
-            }
-            
-            if (rutinaCompletaExitosa == 1) {
-                contadorRutinas++;
-                float totalCalorias = calcularCalorias(minutosFinales, factorCalorias);
                 
-                printf("\n--- REPORTE DE ENTRENAMIENTO ---\n");
-                printf("🔥 Calorias quemadas: %.1f kcal\n", totalCalorias);
-                printf("📈 Rutinas completadas registradas en total: %d\n", contadorRutinas);
+                if (rutinaCompletaExitosa == 1) {
+                    contadorRutinas++;
+                    float totalCalorias = calcularCalorias(tiempoMinutosRutina, factorCalorias);
+                    
+                    printf("\n--- REPORTE DE ENTRENAMIENTO ---\n");
+                    printf("🔥 Calorias quemadas: %.1f kcal\n", totalCalorias);
+                    printf("📈 Rutinas completadas registradas en total: %d\n", contadorRutinas);
+                }
+            } else {
+                printf("\n¡Plan guardado para luego!\n");
             }
         } else {
-            printf("\n¡Plan guardado para luego!\n");
+            // Opción 2: Cronómetro libre independiente que también suma al contador y calcula calorías
+            int minutosLibres = configurarTiempoManual();
+            char comenzarLibre;
+            printf("\n¿Deseas iniciar el cronómetro libre ahora? (s/n): ");
+            scanf(" %c", &comenzarLibre);
+            
+            if (comenzarLibre == 's' || comenzarLibre == 'S') {
+                int estadoLibre = iniciarCronometroLibre(minutosLibres * 60);
+                
+                if (estadoLibre == 1) {
+                    contadorRutinas++;
+                    float totalCaloriasLibre = calcularCalorias(minutosLibres, factorCalorias);
+                    
+                    printf("\n--- REPORTE DE CRONOMETRO LIBRE ---\n");
+                    printf("🔥 Calorias quemadas: %.1f kcal\n", totalCaloriasLibre);
+                    printf("📈 Rutinas completadas registradas en total: %d\n", contadorRutinas);
+                }
+            } else {
+                printf("\nCronómetro libre cancelado.\n");
+            }
         }
         
-        // Menú de control para decidir si sigue en la app o sale por completo
+        // Menú de control para continuar o salir
         printf("\n======================================================\n");
         printf("¿Qué deseas hacer ahora?\n");
-        printf("1. Realizar otra rutina (Continuar en la app)\n");
+        printf("1. Realizar otra actividad (Continuar en la app)\n");
         printf("2. Salir del programa\n");
         printf("Elige una opción (1-2): ");
         scanf("%d", &opcionMenuPrincipal);
         
     } while (opcionMenuPrincipal == 1);
     
-    printf("\n¡Gracias por usar FitLife App! Sigue entrenando con constancia. ¡Hasta luego, 🌱\n");
+    // Reporte final al salir del programa frente al objetivo base (mínimo 1 rutina completada)
+    printf("\n======================================================\n");
+    printf("📊 REPORTE FINAL DE LA JORNADA:\n");
+    printf("• Rutinas completadas: %d\n", contadorRutinas);
+    if (contadorRutinas >= 1) {
+        printf("🌟 ¡Objetivo cumplido! Has completado al menos una sesión de entrenamiento hoy. ¡Excelente trabajo, hatsu!\n");
+    } else {
+        printf("⚠️ No registraste ninguna sesión completa de entrenamiento hoy. ¡Ánimo para la próxima, hatsu!\n");
+    }
+    printf("======================================================\n");
+    printf("¡Gracias por usar FitLife App! ¡Hasta luego!\n");
     
     return 0;
 }
-
 ```
