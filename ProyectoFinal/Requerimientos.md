@@ -1,10 +1,32 @@
 <div align="center">
 
-# Programa y Análisis del Programa
+# FitLife
 
 </div>
 
 ---
+
+# Análisis del Programa
+
+## Problemática central 
+
+Lo que resuelve FitLife App es la falta de accesibilidad, personalización y constancia en el seguimiento de la salud y el acondicionamiento físico diario, Muchas personas desean llevar un estilo de vida saludable, pero se enfrentan a tres barreras principales que esta aplicación aborda directamente:
+
+* No todos los usuarios tienen el mismo peso, altura o nivel de condición física. Entrenar sin una guía personalizada o con ejercicios genéricos suele llevar a la frustración, al abandono o incluso a lesiones.
+
+* Existen muchas calculadoras de IMC o tablas nutricionales en internet, pero están aisladas y el usuario necesita un sistema que conecte sus datos corporales (IMC), su nivel de experiencia, un plan nutricional acorde y una rutina de ejercicios en un solo lugar.
+
+* Entrenar como un cronómetr o sin un refuerzo positivo constante hace que sea muy fácil perder la noción del tiempo o la motivación para terminar una sesión.
+
+## ¿Cómo soluciona la app esta problemática?
+
+* Valida los datos corporales del usuario y calcula su IMC para determinar automáticamente su perfil y un factor de calorías adecuado.
+
+* Ofrece planes específicos según las necesidades reales del usuario, eliminando las adivinanzas sobre qué comer.
+
+* Utiliza un cronómetro interactivo multiplataforma que guía ejercicio por ejercicio, calcula las calorías quemadas al finalizar y registra las rachas de rutinas completadas para fomentar la constancia diaria.
+
+# Requerimientos del sistema
 
 ### A. Módulo de Gestión de Datos Corporales 
 * `datosUsuario();`
