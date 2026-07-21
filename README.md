@@ -16,8 +16,8 @@
 * **Asignatura:** Teoría de la Programación
 * **Integrantes:**
   * Juan Pablo Jumbo Orellana
-  * [Integrante 2]
-  * [Integrante 3]
+  * Luis Alejandro Rodríguez Luzón
+  * Andy Vladimir Ordoñez Namcela
   * [Integrante 4]
 
 ---
