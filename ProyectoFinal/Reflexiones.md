@@ -1,4 +1,8 @@
+<div align="center">
+
 # Reflexiones criticas personales
+
+</div>
 
 ## Juan Pablo Jumbo Orellana
 
