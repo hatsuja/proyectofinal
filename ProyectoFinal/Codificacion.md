@@ -1,5 +1,8 @@
-
+<div align="center">
+    
 # Codificación y Validación del programa
+
+</div>
 
 La codificación del programa se realizó en el lenguaje de programación C
 
