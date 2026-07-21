@@ -53,11 +53,9 @@ Para el calculo de las calorías el sistema deberá aplicar un factor multiplica
 El sistema debe detectar la opción de "Salir" del menú principal para interrumpir el programa y, antes de cerrarse, el sistema deberá generar un reporte del esfuerzo realizado frente a un objetivo base, notificando al usuario si ha completado al menos una sesión de entrenamiento durante su jornada.
 
 
-<p align="center">
   
 [📂 Ir al Índice Principal 📂](programacion/unidad1/Algoritmo.md](https://github.com/hatsuja/proyectofinal)****
 
-</p>
 
 
 
