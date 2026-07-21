@@ -51,3 +51,14 @@ Para el calculo de las calorías el sistema deberá aplicar un factor multiplica
 * `resumenDiario();`
 
 El sistema debe detectar la opción de "Salir" del menú principal para interrumpir el programa y, antes de cerrarse, el sistema deberá generar un reporte del esfuerzo realizado frente a un objetivo base, notificando al usuario si ha completado al menos una sesión de entrenamiento durante su jornada.
+
+
+<p align="center">
+  <a href="https://github.com/hatsuja/PortafolioDigitalTeoriaProgramacion/blob/main/index.md](https://github.com/hatsuja/proyectofinal
+">
+    <b>📂 Ir al Índice Principal 📂</b>
+  </a>
+</p>
+
+
+
