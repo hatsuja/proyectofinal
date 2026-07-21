@@ -1,4 +1,10 @@
 
+# Codificación y Validación del programa
+
+La codificación del programa se realizó en el lenguaje de programación C
+
+## Código en C
+
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -334,3 +340,11 @@ int main() {
     return 0;
 }
 ```
+
+## Validación y pruebas de escritorio
+
+[📂 Ir al Índice Principal 📂](https://github.com/hatsuja/proyectofinal)
+
+
+
+
