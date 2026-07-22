@@ -34,6 +34,10 @@ typedef struct {
     float imc;
 } Usuario;
 
+#define TIPO_VOLUMEN 0
+#define TIPO_RECOMPOSICION 1
+#define TIPO_DEFICIT 2
+
 // --- PROTOTIPOS DE FUNCIONES ---
 void limpiarPantalla();
 void mostrarFraseMotivacional();
@@ -115,28 +119,79 @@ void registrarUsuario(Usuario *user) {
 }
 
 void mostrarPlanPersonalizado(const Usuario *user) {
+    // ---------------------------------------------------------
+    // ALMACENAMIENTO EN ARREGLOS MULTIDIMENSIONALES
+    // ---------------------------------------------------------
+    // Usamos un arreglo de 2 dimensiones de punteros a char (cadenas).
+    // Dimensiones: [3 tipos de planes][3 comidas del dia]
+    const char *menusNutricionales[3][3] = {
+        // [0] TIPO_VOLUMEN (Bajo peso)
+        {
+            "Batido de leche entera, platano, avena y mantequilla de mani.", // Desayuno
+            "Carne de res o pollo, arroz blanco y pure de camote.",          // Almuerzo
+            "Pescado o pollo con papas al horno y aguacate."                 // Cena
+        },
+        // [1] TIPO_RECOMPOSICION (Peso normal)
+        {
+            "Tortilla de claras de huevo con espinacas y avena en agua.",
+            "Pechuga de pollo a la plancha, arroz integral y ensalada verde.",
+            "Filete de pescado al horno con brocoli al vapor."
+        },
+        // [2] TIPO_DEFICIT (Sobrepeso)
+        {
+            "Huevos revueltos con tomate, cebolla y te verde (sin azucar).",
+            "Pechuga de pavo a la plancha con una porcion grande de ensalada mixta.",
+            "Atun en agua con lechuga, pepino y un chorrito de limon."
+        }
+    };
+
+    // Arreglos auxiliares para los titulos y etiquetas
+    const char *titulosPlanes[3] = {
+        "PLAN DE VOLUMEN (Enfoque: Subir masa muscular magra)",
+        "PLAN DE RECOMPOSICION (Enfoque: Mantener peso y tonificar)",
+        "PLAN DE DEFICIT CALORICO (Enfoque: Perder grasa corporal)"
+    };
+    
+    const char *etiquetasComidas[3] = {"Desayuno", "Almuerzo", "Cena"};
+
+
+    // ---------------------------------------------------------
+    // INICIO DE LA INTERFAZ
+    // ---------------------------------------------------------
     limpiarPantalla();
-    printf("======================================================\n");
-    printf("        TU PLAN PERSONALIZADO FITLIFE                \n");
-    printf("======================================================\n");
+    printf("========================================================\n");
+    printf("             TU PLAN PERSONALIZADO FITLIFE              \n");
+    printf("========================================================\n");
     printf("Usuario: %s\n", user->nombre);
     printf("Tu IMC calculado es: %.1f\n\n", user->imc);
-    
+
     printf(" PLAN NUTRICIONAL SUGERIDO:\n");
-    if (user->imc < 21.5) {
-        printf("-> PLAN DE VOLUMEN (Enfoque: Subir masa muscular magra)\n");
-        printf("   • Desayuno: Batido de leche entera, platano, avena y mantequilla de mani.\n");
-        printf("   • Almuerzo: Carne de res o pollo, arroz blanco y pure de camote.\n");
-        printf("   • Cena: Pescado o pollo con papas al horno y aguacate.\n");
-    } else {
-        printf("-> PLAN DE RECOMPOSICION (Enfoque: Bajar grasa y crear musculo)\n");
-        printf("   • Desayuno: Tortilla de claras de huevo con espinacas y avena en agua.\n");
-        printf("   • Almuerzo: Pechuga de pollo a la plancha, arroz integral y ensalada verde.\n");
-        printf("   • Cena: Filete de pescado al horno con brocoli al vapor.\n");
+
+    int indicePlan; // Guardará el número del plan que le toca al usuario
+
+    // ---------------------------------------------------------
+    // AMPLIAR LA LÓGICA DE SALUD (if / else if / else)
+    // ---------------------------------------------------------
+    if (user->imc < 18.5) {
+        indicePlan = TIPO_VOLUMEN;           // Bajo peso
+    } 
+    else if (user->imc >= 18.5 && user->imc <= 24.9) {
+        indicePlan = TIPO_RECOMPOSICION;     // Peso normal
+    } 
+    else {
+        indicePlan = TIPO_DEFICIT;           // Sobrepeso (IMC >= 25.0)
     }
+
+    printf("-> %s\n", titulosPlanes[indicePlan]);
+    
+    // Un bucle for recorre el arreglo multidimensional para imprimir las comidas
+    for (int i = 0; i < 3; i++) {
+        printf("   * %s: %s\n", etiquetasComidas[i], menusNutricionales[indicePlan][i]);
+    }
+
     printf("\n RECOMENDACION DE HIDRATACION ESTANDAR:\n");
-    printf("-> Beber 2 litros de agua al dia.\n");
-    printf("------------------------------------------------------\n");
+    printf("-> Beber al menos 2 a 3 litros de agua al dia.\n");
+    printf("--------------------------------------------------------\n");
 }
 
 void configurarRutina(int opcionNivel, Ejercicio rutinaAsignada[], int *tiempoMinutos) {
