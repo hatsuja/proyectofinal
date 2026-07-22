@@ -74,8 +74,13 @@ Para la estimación del gasto energético, el sistema aplica un factor multiplic
 
 El sistema gestiona un ciclo principal controlado por un menú que permite al usuario repetir actividades (`opcionMenuPrincipal == 1`) o finalizar el programa. Al detectar la opción de salida, el flujo interrumpe el ciclo e invoca la función de cierre para generar un reporte final de la jornada. Este reporte evalúa el esfuerzo contrastado con un objetivo base, validando mediante una estructura condicional si el `contadorRutinas` es mayor o igual a 1 para notificar con un mensaje personalizado el cumplimiento de al menos una sesión completada durante el día.
 
+# Diseño del programa
 
-  
+
+Estructura de desglose de las funciones
+
+  <img width="1269" height="353" alt="image" src="https://github.com/user-attachments/assets/6d55075b-10ba-4264-a7f8-4bf90139b234" />
+
 [📂 Ir al Índice Principal 📂](https://github.com/hatsuja/proyectofinal)
 
 
