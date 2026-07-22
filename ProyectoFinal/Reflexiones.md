@@ -29,6 +29,14 @@ Además, desarrollar la parte del resumen final (<code>mostrar_resumen_diario</c
 Participar en la creación de esta aplicación ha marcado un antes y un después en mi forma de entender la programación, llevándome a comprender cómo distintas piezas de código interactúan en un ecosistema completo. Enfrentarme al desarrollo del cálculo dinámico de calorías y la asignación del plan nutricional me obligó a aplicar lógicas de control más avanzadas y a ser sumamente cuidadoso con el manejo de variables flotantes para no perder precisión en los resultados biométricos.<br><br> El reto más grande, sin embargo, fue lograr que el módulo del temporizador se comunicara correctamente con los niveles de intensidad elegidos por el usuario, garantizando que el sistema diferenciara un estado "en curso" de uno "finalizado" para registrar las rachas de forma exacta. Al final, este proyecto no solo afianzó mis bases técnicas en la manipulación de datos y estructuras, sino que me demostró cómo un código bien validado y modularizado se traduce en una herramienta estable que realmente aporta valor al usuario final.
 </p>
 
+## Luis Alejandro Rodríguez Luzón
+<p align="justify">
+Con este proyecto me di cuenta de que desarrollar una aplicación no es solo tirar código, sino pensar de verdad en la experiencia de la persona que la va a usar. Aprendí a validar bien las entradas para que el programa no se rompa si meten texto por error o números fuera de rango, y entendí cómo manejar el tiempo real en C para que el cronómetro funcione fluido. También me sirvió para entender la importancia de organizar el código en módulos limpios.
+
+<p align="justify">
+Pero la lección más grande la me la llevé al ver los límites de mi propia app: me di cuenta de que de nada sirve un buen cálculo de calorías o un cronómetro si al cerrar la terminal todo el progreso se borra por no tener una base de datos, o de que una fórmula simple como el IMC se queda corta si no consideras más variables del usuario. Al final, este proyecto me enseñó que la lógica básica es solo el primer paso y me dejó clarísimo el camino para lo que sigue: aprender a guardar datos de forma permanente y empezar a estructurar todo con clases para escribir código profesional de verdad.
+</p>
+
 [📂 Ir al Índice Principal 📂](https://github.com/hatsuja/proyectofinal)
 
 
