@@ -16,7 +16,7 @@ Lo que resuelve FitLife App es la falta de accesibilidad, personalización y con
 
 * Existen muchas calculadoras de IMC o tablas nutricionales en internet, pero están aisladas y el usuario necesita un sistema que conecte sus datos corporales (IMC), su nivel de experiencia, un plan nutricional acorde y una rutina de ejercicios en un solo lugar.
 
-* Entrenar como un cronómetr o sin un refuerzo positivo constante hace que sea muy fácil perder la noción del tiempo o la motivación para terminar una sesión.
+* Entrenar como un cronómetro sin un refuerzo positivo constante hace que sea muy fácil perder la noción del tiempo o la motivación para terminar una sesión.
 
 ## ¿Cómo soluciona la app esta problemática?
 
