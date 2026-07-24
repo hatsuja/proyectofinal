@@ -380,6 +380,15 @@ int main() {
     return 0;
 }
 ```
+## Casos de prueba.
+<img width="821" height="982" alt="image" src="https://github.com/user-attachments/assets/8517689e-f9e8-48ea-97cb-374f75dc3a61" />
+
+<img width="671" height="967" alt="image" src="https://github.com/user-attachments/assets/edd0034e-f2a8-4738-95fd-47095216efd4" />
+
+---
+<img width="837" height="1022" alt="image" src="https://github.com/user-attachments/assets/66f2e7a1-30dd-4aa2-94fe-74cd6604e82e" />
+
+<img width="1022" height="967" alt="image" src="https://github.com/user-attachments/assets/90fcefc8-bfd0-4d28-95d6-8f6f16a5930e" />
 
 ## Validación y pruebas de escritorio
 
