@@ -79,7 +79,16 @@ El sistema gestiona un ciclo principal controlado por un menú que permite al us
 
 Estructura de desglose de las funciones
 
+
   <img width="1269" height="353" alt="image" src="https://github.com/user-attachments/assets/6d55075b-10ba-4264-a7f8-4bf90139b234" />
+
+
+
+
+# Póster académico
+
+  <img width="754" height="1350" alt="image" src="https://github.com/user-attachments/assets/72c17f62-4952-43af-8be3-2a64db565ad5" />
+
 
 [📂 Ir al Índice Principal 📂](https://github.com/hatsuja/proyectofinal)
 
