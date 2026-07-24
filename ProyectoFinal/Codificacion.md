@@ -246,8 +246,14 @@ float calcularCalorias(int minutos, float factorCalorias) {
 
 void ejecutarRutinaPredefinida(int cantidadEjercicios, const Ejercicio rutinaAsignada[], int tiempoMinutosRutina, float factorCalorias, int *contadorRutinas) {
     char comenzar;
-    printf("\nDeseas iniciar la rutina predefinida ahora? (s/n): ");
-    scanf(" %c", &comenzar);
+    do {
+        printf("\nDeseas iniciar la rutina predefinida ahora? (s/n): ");
+        scanf(" %c", &comenzar);
+        if (comenzar != 's' && comenzar != 'S' && comenzar != 'n' && comenzar != 'N') {
+            printf("\nError ingrese solamente s para Si y n para NO\n");
+        }
+    } while (comenzar != 's' && comenzar != 'S' && comenzar != 'n' && comenzar != 'N');
+
     if (comenzar == 's' || comenzar == 'S') {
         int minutosPorEjercicio = tiempoMinutosRutina / cantidadEjercicios;
         if (minutosPorEjercicio < 1) minutosPorEjercicio = 1; 
@@ -281,8 +287,14 @@ void ejecutarRutinaPredefinida(int cantidadEjercicios, const Ejercicio rutinaAsi
 void ejecutarCronometroLibre(float factorCalorias, int *contadorRutinas) {
     int minutosLibres = configurarTiempoManual();
     char comenzarLibre;
-    printf("\nDeseas iniciar el cronometro libre ahora? (s/n): ");
-    scanf(" %c", &comenzarLibre);
+    do {
+        printf("\nDeseas iniciar el cronometro libre ahora? (s/n): ");
+        scanf(" %c", &comenzarLibre);
+        if (comenzarLibre != 's' && comenzarLibre != 'S' && comenzarLibre != 'n' && comenzarLibre != 'N') {
+            printf("\nError ingrese solamente s para Si y n para NO\n");
+        }
+    } while (comenzarLibre != 's' && comenzarLibre != 'S' && comenzarLibre != 'n' && comenzarLibre != 'N');
+
     if (comenzarLibre == 's' || comenzarLibre == 'S') {
         int estadoLibre = iniciarCronometro(minutosLibres * 60, "CRONOMETRO LIBRE EN CURSO...");
         
@@ -333,22 +345,36 @@ int main() {
         }
         printf("======================================================\n");
         int tipoEntrenamiento = 0;
-        printf("Como deseas entrenar hoy?\n");
-        printf("1. Usar la rutina predefinida asignada\n");
-        printf("2. Usar cronometro libre independiente (Max. 30 min)\n");
-        printf("Elige una opcion (1-2): ");
-        scanf("%d", &tipoEntrenamiento);
+        
+        do {
+            printf("Como deseas entrenar hoy?\n");
+            printf("1. Usar la rutina predefinida asignada\n");
+            printf("2. Usar cronometro libre independiente (Max. 30 min)\n");
+            printf("Elige una opcion (1-2): ");
+            scanf("%d", &tipoEntrenamiento);
+            if (tipoEntrenamiento != 1 && tipoEntrenamiento != 2) {
+                printf("\nError: Solo puedes elegir la opcion 1 o 2.\n\n");
+            }
+        } while (tipoEntrenamiento != 1 && tipoEntrenamiento != 2);
+
         if (tipoEntrenamiento == 1) {
             ejecutarRutinaPredefinida(cantidadEjercicios, rutinaAsignada, tiempoMinutosRutina, user.factorCalorias, &contadorRutinas);
         } else {
             ejecutarCronometroLibre(user.factorCalorias, &contadorRutinas);
         }
-        printf("\n======================================================\n");
-        printf("Que deseas hacer ahora?\n");
-        printf("1. Realizar otra actividad (Continuar en la app)\n");
-        printf("2. Salir del programa\n");
-        printf("Elige una opcion (1-2): ");
-        scanf("%d", &opcionMenuPrincipal);
+        
+        do {
+            printf("\n======================================================\n");
+            printf("Que deseas hacer ahora?\n");
+            printf("1. Realizar otra actividad (Continuar en la app)\n");
+            printf("2. Salir del programa\n");
+            printf("Elige una opcion (1-2): ");
+            scanf("%d", &opcionMenuPrincipal);
+            if (opcionMenuPrincipal != 1 && opcionMenuPrincipal != 2) {
+                printf("\nError: Solo puedes elegir la opcion 1 o 2.\n");
+            }
+        } while (opcionMenuPrincipal != 1 && opcionMenuPrincipal != 2);
+
     } while (opcionMenuPrincipal == 1); 
     mostrarReporteFinal(user.nombre, contadorRutinas); 
     return 0;
